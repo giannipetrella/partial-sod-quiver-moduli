@@ -2,12 +2,21 @@ using QuiverTools
 using QuiverTools: Chern_character_universal_bundle, Chern_class_line_bundle, Chern_character_from_classes
 using QuiverTools: dual_Chern_character as dual
 
-
+function is_strongly_amply_stable(M::QuiverModuliSpace)
+    dest = QuiverTools.all_destabilizing_subdimension_vectors(M.d, M.theta, M.denom)
+    return all(e -> Euler_form(M.Q, e, M.d - e) <= -2, dest)
+end
 
 function cohomologies_vanishing(M::QuiverModuliSpace;
     chi=QuiverTools.extended_gcd(M.d)[2],
     r=gcd(canonical_stability(M.Q, M.d))
     )
+
+    # check if assumptions hold.
+    # if not, throw a warning
+    if !(is_acyclic(M.Q) && is_coprime(M.d, M.theta) && is_strongly_amply_stable(M))
+        @warn "The assumptions for the verification do not hold.\n\n"
+    end
 
 
     @info "Checking the following case:\n\n"
