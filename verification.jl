@@ -210,88 +210,97 @@ end
 function main()
 
 
-    # # del Pezzo surfaces
+    # del Pezzo surfaces
 
-    # # P^2
-    # #
-    # Q = mKronecker_quiver(3);
-    # d = [1, 1];
-    # a = [2, -1];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-    # # P^1 x P^1
-    # #
-    # Q = Quiver("1--3,2--3");
-    # d = [1, 1, 1];
-    # a = [1, 1, -1];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-    # # P^2 blown up at 1 point
-    # #
-    # Q = Quiver("1-2,1-3,2--3");
-    # d = [1, 1, 1];
-    # a = [1, 1, -1];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-    # # P^2 blown up at 2 points
-    # #
-    # Q = Quiver("1-3,1-4,2-3,2-4,3-4");
-    # d = [1, 1, 1, 1];
-    # a = [1, 1, 0, -1];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-    # # P^2 blown up at 3 points
-    # #
-    # Q = Quiver("1-4,2-4,3-4,1-5,2-5,3-5");
-    # d = [1, 1, 1, 1, 1];
-    # a = [1, 1, 1, -1, -1];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-    # # P^2 blown up at 4 points
-    # #
-    # Q = Quiver("1-6,2-6,3-6,4-6,5-6");
-    # d = [1, 1, 1, 1, 1, 2];
-    # a = [1, 1, 1, 1, 1, -2];
-    # M = QuiverModuliSpace(Q, d);
-    # cohomologies_vanishing(M; chi=a)
-
-
-
-    # m-Kronecker quiver
+    # P^2
     #
-    # d = [2, 3];
-    # a = [2, -1]
-    # @warn "this is very slow, in the order of several weeks!"
-    # for m in 3:10
-    #    Q = mKronecker_quiver(m);
-    #    M = QuiverModuliSpace(Q, d)
-    #    cohomologies_vanishing(M; chi=a);
-    # end
+    Q = mKronecker_quiver(3);
+    d = [1, 1];
+    a = [2, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
 
-    # larger 3-Kronecker quiver
+    # P^1 x P^1
     #
-    # Q = mKronecker_quiver(3);
-    # d = [3, 4];
-    # a = [3, -2];
+    Q = Quiver("1--3,2--3");
+    d = [1, 1, 1];
+    a = [1, 1, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+    # P^2 blown up at 1 point
+    #
+    Q = Quiver("1-2,1-3,2--3");
+    d = [1, 1, 1];
+    a = [1, 1, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+    # P^2 blown up at 2 points
+    #
+    Q = Quiver("1-3,1-4,2-3,2-4,3-4");
+    d = [1, 1, 1, 1];
+    a = [1, 1, 0, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+    # P^2 blown up at 3 points
+    #
+    Q = Quiver("1-4,2-4,3-4,1-5,2-5,3-5");
+    d = [1, 1, 1, 1, 1];
+    a = [1, 1, 1, -1, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+    # P^2 blown up at 4 points
+    #
+    Q = Quiver("1-6,2-6,3-6,4-6,5-6");
+    d = [1, 1, 1, 1, 1, 2];
+    a = [1, 1, 1, 1, 1, -2];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
 
 
-    # framed quivers
+
+
+    # Framed quiver for Fano 3-fold
     #
     Q = Quiver("1-2,1-3,2---3");
-    Q = Quiver("1---2,1-3,2-3");
     d = [1, 1, 1];
-    # a = [1, 1, -1];
-    a = [2, -1, 0];
-
-    # # a = QuiverTools.extended_gcd(d)[2]
-
-    M = QuiverModuliSpace(Q, d)
+    a = [1, 1, -1];
+    M = QuiverModuliSpace(Q, d);
     cohomologies_vanishing(M; chi=a)
+
+
+    # Fano 5-fold
+    #
+    Q = Quiver("1-2,1--3,2---3");
+    d = [1, 1, 1];
+    a = [0, 2, -1];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+    # Recurring example in the paper
+
+    Q = mKronecker_quiver(3);
+    d = [3, 4];
+    a = [3, -2];
+    M = QuiverModuliSpace(Q, d);
+    cohomologies_vanishing(M; chi=a)
+
+
+    # m-Kronecker quiver for various values of m
+
+    m_check = 5
+    d = [2, 3];
+    a = [2, -1]
+    @warn "this is extremely slow!"
+    for m in 3:m_check
+       Q = mKronecker_quiver(m);
+       M = QuiverModuliSpace(Q, d)
+       cohomologies_vanishing(M; chi=a);
+    end
+
 end
 
 
