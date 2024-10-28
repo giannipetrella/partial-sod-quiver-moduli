@@ -6,7 +6,9 @@ for quiver moduli" of Gianni Petrella.
 The code in this repository allows to verify whether Questions A, B and C as described
 in the paper hold for any given datum of a quiver `Q` and any dimension vector `d`.
 
-The script `verification.jl` can reproduce all the results for which it is cited in the paper.
+The script `verification.jl` can reproduce all the results for which it is cited in the paper,
+while the script `mkronecker-verification.jl` reproduces the results it is cited for
+in Proposition 5.2.
 
 To use this code, follow the instructions below.
 
@@ -16,8 +18,8 @@ To use this code, follow the instructions below.
 1. You need a Julia installation.
 Install Julia from [the Julia download page](https://julialang.org).
 
-2. Run the Julia REPL in the folder where you wish to save `verification.jl` and
-install `QuiverTools` by running
+2. Run the Julia REPL in the folder where you wish to save `verification.jl`
+and `mkronecker-verification.jl`, and install `QuiverTools` by running
 
 ```julia
 using Pkg; Pkg.add(url="https://github.com/QuiverTools/QuiverTools.jl.git")
@@ -27,6 +29,12 @@ using Pkg; Pkg.add(url="https://github.com/QuiverTools/QuiverTools.jl.git")
 
 ```sh
 julia verification.jl
+```
+
+4. To verify the claims on m-Kronecker quivers of Proposition 5.2, run
+
+```sh
+julia mkronecker-verification.jl
 ```
 
 To verify whether any of the questions of the paper holds for your favourite quiver `Q`,
