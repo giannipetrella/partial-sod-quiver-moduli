@@ -1,4 +1,4 @@
-# Verify the conjecture for a given case
+# SOD check
 
 This repository is part of the paper "Partial semiorthogonal decomposition
 for quiver moduli" of Gianni Petrella.
