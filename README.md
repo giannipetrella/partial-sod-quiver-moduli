@@ -37,6 +37,15 @@ julia verification.jl
 julia mkronecker-verification.jl
 ```
 
+### Runtimes
+
+The script `verification.jl` ran in around 30 minutes on a Macbook Pro M1 Pro on battery power.
+
+The script `mkronecker-verification.jl` ran on the same machine for about one hour.
+To verify the claim for `m` up to 11, it was let running on a server for several weeks.
+
+## Test other cases
+
 To verify whether any of the questions of the paper holds for your favourite quiver `Q`,
 dimension vector `d` and choice of linearisation `a`,
 comment out the examples from the paper in `verification.jl` and replace them with yours.
