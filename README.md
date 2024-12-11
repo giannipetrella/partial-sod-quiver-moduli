@@ -22,7 +22,7 @@ Install Julia from [the Julia download page](https://julialang.org).
 and `mkronecker-verification.jl`, and install `QuiverTools` by running
 
 ```julia
-using Pkg; Pkg.add(url="https://github.com/QuiverTools/QuiverTools.jl.git")
+using Pkg; Pkg.add(url="https://github.com/QuiverTools/QuiverTools.jl.git#commit7068deed83c7de110b84d7dc32ff56bb95f09eff")
 ```
 
 3. Quit the Julia REPL and in your terminal run
